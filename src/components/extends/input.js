@@ -1,20 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-class Input extends React.Component {
-  render() {
-    return (
-      <input
-        type={this.props.type}
-        className={this.props.className}
-        placeholder={this.props.placeholder}
-        name={this.props.name}
-        value={this.props.text}
-        onChange={(event) => this.props.handleChangeText(event)}
-        onKeyDown={(event) => this.props.addTodo(event)}
-      />
-    );
-  }
+function Input(props) {
+  return (
+    <input
+      type={props.type}
+      className={props.className}
+      placeholder={props.placeholder}
+      name={props.name}
+      value={props.text}
+      onChange={props.handleChangeText}
+      onKeyDown={props.addTodo}
+    />
+  );
 }
 
 Input.propTypes = {

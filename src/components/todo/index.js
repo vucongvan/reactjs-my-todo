@@ -1,6 +1,6 @@
 import Tabs from "./tabs";
-import Input from "../extends/input";
 import List from "./list";
+import Create from "./create";
 import React from "react";
 import { TABS } from "../../constants";
 
@@ -22,7 +22,7 @@ class Todo extends React.Component {
     this.getToDos = this.getToDos.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
     this.toggleTodoCompleted = this.toggleTodoCompleted.bind(this);
-    this.addToDo = this.addToDo.bind(this);
+    this.addTodo = this.addTodo.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
   }
 
@@ -38,9 +38,9 @@ class Todo extends React.Component {
     });
   }
 
-  addToDo(event) {
-    if (event.key === "Enter") {
-      let text = event.target.value;
+  addTodo(event) {
+    let text = event.target.value;
+    if (event.key === "Enter" && text) {
       let todos = this.state.todos;
       let id = Math.max(...todos.map((todo) => todo.id)) + 1;
       let todo = {
@@ -95,22 +95,11 @@ class Todo extends React.Component {
         </div>
         <Tabs tabSelected={this.state.tabSelected} changeTab={this.changeTab} />
         <div className="main container rounded p-3">
-          <div className="form-group mb-5">
-            <Input
-              type="text"
-              className="form-control mb-2"
-              placeholder="What do you want to do?"
-              name="input"
-              handleChangeText={this.handleChangeText}
-              addTodo={this.addToDo}
-              text={this.state.text}
-            />
-            <label htmlFor="#input">
-              <em>
-                Press <code>Enter</code> to save
-              </em>
-            </label>
-          </div>
+          <Create
+            handleChangeText={this.handleChangeText}
+            addTodo={this.addTodo}
+            text={this.state.text}
+          />
           <List
             todos={this.getToDos()}
             removeTodo={this.removeTodo}

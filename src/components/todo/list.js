@@ -1,33 +1,22 @@
 import React from "react";
-import ToDo from "./todo";
-import PropTypes from "prop-types"; 
+import Todo from "./todo";
+import PropTypes from "prop-types";
 
-class List extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: "",
-    };
-  }
+function List(props) {
+  const todos = props.todos;
 
-  render() {
-    const todos = this.props.todos;
-
-    return (
-      <div className="cards">
-        {
-          todos.map((todo) => (
-            <ToDo key= {todo.id} 
-                  item = {todo}
-                  removeItem = {() => this.props.removeTodo(todo.id)}
-                  toggleTodoCompleted = {() => this.props.toggleTodoCompleted(todo.id)}
-
-            />
-          ))
-        }   
-      </div>
-    );
-  }
+  return (
+    <div className="cards">
+      {todos.map((todo) => (
+        <Todo
+          key={todo.id}
+          item={todo}
+          removeItem={() => props.removeTodo(todo.id)}
+          toggleTodoCompleted={() => props.toggleTodoCompleted(todo.id)}
+        />
+      ))}
+    </div>
+  );
 }
 
 List.propTypes = {

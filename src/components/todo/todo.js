@@ -2,9 +2,8 @@ import React from "react";
 import { TABS } from "../../constants";
 import PropTypes from "prop-types";
 
-class ToDo extends React.Component {
-  render() {
-    const item = this.props.item;
+function Todo(props) {
+    const item = props.item;
 
     return (
       <div className="card">
@@ -13,7 +12,7 @@ class ToDo extends React.Component {
             id="delete"
             type="button"
             className="btn btn-link float-right"
-            onClick={this.props.removeItem}
+            onClick={props.removeItem}
           >
             ❌
           </button>
@@ -21,7 +20,7 @@ class ToDo extends React.Component {
             id="done"
             type="button"
             className="btn btn-link float-right mr-3"
-            onClick={this.props.toggleTodoCompleted}
+            onClick={props.toggleTodoCompleted}
           >
             ✔️
           </button>
@@ -35,10 +34,9 @@ class ToDo extends React.Component {
         </div>
       </div>
     );
-  }
 }
 
-ToDo.propTypes = {
+Todo.propTypes = {
   removeItem: PropTypes.func.isRequired,
   toggleTodoCompleted: PropTypes.func.isRequired,
   item: PropTypes.shape({
@@ -48,4 +46,4 @@ ToDo.propTypes = {
   }),
 };
 
-export default ToDo;
+export default Todo;
