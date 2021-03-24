@@ -1,4 +1,3 @@
-import React from "react";
 import Todo from "./todo";
 import PropTypes from "prop-types";
 

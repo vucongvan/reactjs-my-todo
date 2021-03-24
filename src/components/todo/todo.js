@@ -1,4 +1,3 @@
-import React from "react";
 import { TABS } from "../../constants";
 import PropTypes from "prop-types";
 
