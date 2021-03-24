@@ -1,48 +1,38 @@
-function List(params) {
+import React from "react";
+import ToDo from "./todo";
+import PropTypes from "prop-types"; 
+
+class List extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "",
+    };
+  }
+
+  render() {
+    const todos = this.props.todos;
+
     return (
-        <div className="cards">
-            <div className="card">
-              <div className="card-block">
-                <button
-                  id="delete"
-                  type="button"
-                  className="btn btn-link float-right"
-                >
-                  ❌
-                </button>
-                <button
-                  id="done"
-                  type="button"
-                  className="btn btn-link float-right mr-3"
-                >
-                  ✔️
-                </button>
-                <p className="card-title lead">Learn React</p>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-block">
-                <button
-                  id="delete"
-                  type="button"
-                  className="btn btn-link float-right"
-                >
-                  ❌
-                </button>
-                <button
-                  id="done"
-                  type="button"
-                  className="btn btn-link float-right mr-3"
-                >
-                  ✔️
-                </button>
-                <del>
-                  <p className="card-title lead">Write HTML in my JavaScript</p>
-                </del>
-              </div>
-            </div>
-          </div>
+      <div className="cards">
+        {
+          todos.map((todo) => (
+            <ToDo key= {todo.id} 
+                  item = {todo}
+                  removeItem = {() => this.props.removeTodo(todo.id)}
+                  toggleTodoCompleted = {() => this.props.toggleTodoCompleted(todo.id)}
+
+            />
+          ))
+        }   
+      </div>
     );
+  }
 }
+
+List.propTypes = {
+  removeTodo: PropTypes.func.isRequired,
+  toggleTodoCompleted: PropTypes.func.isRequired,
+};
 
 export default List;

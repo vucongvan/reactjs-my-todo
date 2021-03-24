@@ -2,17 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: "",
-    };
-  }
-
-  onChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
   render() {
     return (
       <input
@@ -20,17 +9,22 @@ class Input extends React.Component {
         className={this.props.className}
         placeholder={this.props.placeholder}
         name={this.props.name}
-        onChange={(event) => this.onChange(event)}
+        value={this.props.text}
+        onChange={(event) => this.props.handleChangeText(event)}
+        onKeyDown={(event) => this.props.addTodo(event)}
       />
     );
   }
 }
 
 Input.propTypes = {
-  type: PropTypes.string,
-  className: PropTypes.string,
-  placeholder: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  handleChangeText: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired,
 };
 
 export default Input;
