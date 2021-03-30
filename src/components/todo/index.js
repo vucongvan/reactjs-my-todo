@@ -4,6 +4,7 @@ import Create from "./create";
 import { TABS } from "../../constants";
 import Header from "./header";
 import { useState } from "react";
+import "./todo.css"
 
 function Todo() {
   const [tabSelected, setTabSelected] = useState(TABS.ALL);

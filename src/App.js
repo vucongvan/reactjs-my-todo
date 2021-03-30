@@ -1,25 +1,25 @@
-import React from 'react';
-import 'antd/dist/antd.css';
 // import Todo from "./components/todo/index"
 import { Layout } from "antd";
-import { useState } from "react";
-import SideBar from './components/partial/sidebar';
-import Header from './components/partial/header';
+import "antd/dist/antd.css";
+import React, { useState } from "react";
+import Header from "./components/partial/header";
+import SideBar from "./components/partial/sidebar";
+import Routes from "./components/routes";
 
-const {Content } = Layout;
+const { Content } = Layout;
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
 
-  function changeToggle () {
+  function changeToggle() {
     setCollapsed(!collapsed);
   }
 
   return (
-    <Layout style={{  minHeight: '100vh' }}>
-      <SideBar collapsed = {collapsed}/>
+    <Layout style={{ minHeight: "100vh" }}>
+      <SideBar collapsed={collapsed} />
       <Layout className="site-layout">
-        <Header collapsed = {collapsed} changeToggle = {changeToggle} />
+        <Header collapsed={collapsed} changeToggle={changeToggle} />
         <Content
           className="site-layout-background"
           style={{
@@ -28,10 +28,13 @@ function App() {
             minHeight: 280,
           }}
         >
-          Content
+          {/* add routes contain content */}
+          <Routes />
         </Content>
       </Layout>
     </Layout>
+
+    
   );
 }
 

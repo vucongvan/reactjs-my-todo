@@ -5,21 +5,25 @@ import {
   UploadOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
+import { Link, useLocation } from "react-router-dom";
 
 function SideBar(props) {
   const { Sider } = Layout;
+
+  let location = useLocation();
+
   return (
     <Sider trigger={null} collapsible collapsed={props.collapsed}>
       <div className="logo" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-        <Menu.Item key="1" icon={<UserOutlined />}>
-          Dashboard
+      <Menu theme="dark" mode="inline" selectedKeys={[location.pathname]}>
+        <Menu.Item key="/" icon={<UserOutlined />}>
+          <Link to="/">Dashboard</Link>
         </Menu.Item>
-        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-          Todo
+        <Menu.Item key="/todo" icon={<VideoCameraOutlined />}>
+          <Link to="/todo">Todo</Link>
         </Menu.Item>
-        <Menu.Item key="3" icon={<UploadOutlined />}>
-          nav 3
+        <Menu.Item key="/router" icon={<UploadOutlined />}>
+          <Link to="/router"> Router Demo</Link>
         </Menu.Item>
       </Menu>
     </Sider>
