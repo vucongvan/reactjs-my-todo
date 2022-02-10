@@ -1,7 +1,7 @@
 function Header() {
   return (
     <div className="text-center">
-      <span className="navbar-brand text-white">Todo List App test</span>
+      <span className="navbar-brand text-white">Todo List App</span>
     </div>
   );
 }
